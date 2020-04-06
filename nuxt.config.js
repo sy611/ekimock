@@ -1,6 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
 import webpack from 'webpack'
 
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/ekimock/'
+        }
+      }
+    : {}
+
 export default {
   mode: 'spa',
   /*
@@ -89,5 +98,6 @@ export default {
       })
     ],
     extend(config, ctx) {}
-  }
+  },
+  ...routerBase
 }
